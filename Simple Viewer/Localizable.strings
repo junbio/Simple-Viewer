@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  Simple Viewer
+
+  
+*/
+
+"OK_TEXT" = "OK";
+"CANCEL_TEXT" = "Cancel";
+"DELETE_TEXT" = "Delete";
+"REMOVE_FROM_SIDEBAR" = "Remove from Sidebar";
+"CONFIRM_DELETE_MESSAGE" = "Are you sure you want to delete %@?";
