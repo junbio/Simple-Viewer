@@ -145,7 +145,17 @@ func sorted(_ contents : inout [Node], ascending: Bool, key: String)
 {
     contents.sort(by: {
         if key == SortDescriptor.SizeID {
-            return itemComparator(lhs: $0.size, rhs: $1.size, ascending: ascending)
+            let isFolder1 = $0.isFolder
+            let isFolder2 = $1.isFolder
+            if isFolder1 == isFolder2 {
+                if isFolder1 {
+                    return itemComparator(lhs: $0.name, rhs: $1.name, ascending: true)
+                } else {
+                    return itemComparator(lhs: $0.size, rhs: $1.size, ascending: ascending)
+                }
+            } else {
+                return ascending ? isFolder1 : isFolder2
+            }
         } else if key == SortDescriptor.CreatedID {
             return itemComparator(lhs: $0.created, rhs: $1.created, ascending: ascending)
         } else if key == SortDescriptor.ModifedID {
@@ -536,7 +546,7 @@ class BrowserViewController: NSViewController {
         } else {
         
         
-        self.url = URL(string: ".")
+            self.url = URL(string: "/\(user)")
         self.navIndex = 0
         self.navigation.removeAll()
         self.navigation.append(self.url!)

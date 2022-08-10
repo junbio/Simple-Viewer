@@ -132,6 +132,7 @@ extension SidebarViewController : NSOutlineViewDelegate {
                     if row < index {
                         dest -= 1
                     }
+                    guard row != 0 else { return }
                     let src = BookmarksManager.shared.bookmarks.remove(at: row-1)
                     
                     BookmarksManager.shared.bookmarks.insert(src, at: dest-1)
@@ -182,7 +183,7 @@ extension SidebarViewController : NSOutlineViewDataSource
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         return BookmarksManager.shared.bookmarks.count + 1
     }
-    
+
     
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
         return false
