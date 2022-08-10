@@ -5,3 +5,6 @@ What works:
 - Drag & Drop
 - Quick Look files
 - Bookmarks
+
+Dependencies:
+- [libssh](https://www.libssh.org)
